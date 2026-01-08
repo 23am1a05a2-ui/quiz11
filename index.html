@@ -2,24 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz app </title>
+    <title>Quiz Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app">
-        <h1>simple Quiz</h1>
-        <div class="quiz">
-            <h2 id="question">Question goes here</h2>
-            <div id="answer-buttons">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
-            </div>
-            <button id="next-btn">Next</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+
+<div class="app">
+    <h1>Quiz App</h1>
+    <p class="subtitle">Enter your name to start</p>
+
+    <input type="text" id="username" placeholder="Your Name">
+    <button id="start-btn">Start Quiz</button>
+</div>
+
+<script>
+document.getElementById("start-btn").addEventListener("click", () => {
+    const name = document.getElementById("username").value.trim();
+
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    localStorage.setItem("quizUser", name);
+    window.location.href = "quiz.html";
+});
+</script>
+
 </body>
 </html>
