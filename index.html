@@ -2,29 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz Login</title>
+    <title>Online Quiz System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
-    <h1>Quiz App</h1>
-    <p class="subtitle">Enter your name to start</p>
+    <h1>Online Quiz System</h1>
+    <p class="subtitle">Enter your name and select difficulty to start</p>
 
     <input type="text" id="username" placeholder="Your Name">
+
+    <select id="difficulty">
+        <option value="">Select Difficulty</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+
     <button id="start-btn">Start Quiz</button>
 </div>
 
 <script>
 document.getElementById("start-btn").addEventListener("click", () => {
     const name = document.getElementById("username").value.trim();
+    const difficulty = document.getElementById("difficulty").value;
 
-    if (name === "") {
-        alert("Please enter your name");
+    if(!name || !difficulty){
+        alert("Please enter your name and select difficulty");
         return;
     }
 
     localStorage.setItem("quizUser", name);
+    localStorage.setItem("quizDifficulty", difficulty);
+
     window.location.href = "quiz.html";
 });
 </script>
